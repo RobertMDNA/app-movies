@@ -4,17 +4,18 @@ let MovieComp = { // creacion de componente movies local
             <img :src="cover">
             <h2 v-text="title"></h2>
             <p v-text="synopsis"></p>
+            <button @click="$emit('update:like', !like)" v-text="like ? 'Favorita' : 'Agregar a Favoritos'"/> <!-- condicional ternario -->
             <hr>
         </div>
     `,
     props: {
         id: {
             type: Number,
-            required: true
+            required: true,
         },
         title: {
             type: String,
-            required: true
+            required: true,
         },
         synopsis: {
             type: String,
@@ -23,7 +24,17 @@ let MovieComp = { // creacion de componente movies local
         },
         cover: {
             type: String,
-            required: true
+            required: true,
+        },
+        like: {
+            type: Boolean,
+            required: true,
+            default(){
+                return false
+            }
         }
+    },
+    methods: {
+        
     }
 }
