@@ -8,8 +8,10 @@ Vue.component('props-comp', { // componente props-comp global
             :title="movie.title" 
             :synopsis="movie.synopsis" 
             :cover="movie.cover"
-            :like.sync="movie.like"
+            :like="movie.like"
+            @toggleLike="onToggleLike"
             /> <!-- pasando data entre componentes -->
+            <MovieFav v-if="showLike"/>
         </div>
     `,
     data(){
@@ -35,16 +37,19 @@ Vue.component('props-comp', { // componente props-comp global
                     cover: 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/zraTDtulFw2wrpyuYf646k95MNq.jpg',
                     like: false
                 }
-            ]
+            ],
+            showLike: false
         }
     },
     components:{
-        MovieComp
+        MovieComp,
+        MovieFav
     },
     methods: {
         onToggleLike(data){
             let movieLike = this.movies.find(movie=>movie.id==data.id)
             movieLike.like = data.like
+            this.showLike = data.like
         }
     }
 })

@@ -4,7 +4,7 @@ let MovieComp = { // creacion de componente movies local
             <img :src="cover">
             <h2 v-text="title"></h2>
             <p v-text="synopsis"></p>
-            <button @click="$emit('update:like', !like)" v-text="like ? 'Favorita' : 'Agregar a Favoritos'"/> <!-- condicional ternario -->
+            <button @click="toggleLike" v-text="like ? 'Favorita' : 'Agregar a Favoritos'"/> <!-- condicional ternario -->
             <hr>
         </div>
     `,
@@ -35,6 +35,12 @@ let MovieComp = { // creacion de componente movies local
         }
     },
     methods: {
-        
+        toggleLike(){
+            let data={
+                id: this.id,
+                like: !this.like
+            }
+            this.$emit('toggleLike', data)
+        }
     }
 }
