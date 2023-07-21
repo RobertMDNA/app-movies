@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+</head>
+<body>
+    <div id="app">
+       <props-comp></props-comp> <!-- hacemos uso del componente -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./components/MovieComponent.js"></script>
+    <script src="./components/PropsComp.js"></script> <!-- agregamos ruta del componente props al index -->
+    <script>
+        let app = new Vue({ // iniciamos instancia de vue
+            el: '#app',
+            data(){
+                return {
+                    title: 'Compartiendo data a componentes Hijos [props]'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
